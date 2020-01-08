@@ -2,7 +2,6 @@ pipeline {
   environment {
     dockerRegistry = "kkajnabi/docker-nodejs"
     dockerRegistryCredential = 'docker-hub'
-    dockerImage = ''
   }
    agent {
         docker {
