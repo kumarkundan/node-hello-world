@@ -41,9 +41,8 @@ pipeline {
     }
      stage('Run') {
        steps {
-         script {
-          dockerImage = docker.run dockerRegistry + ":$BUILD_NUMBER"
-        }
+         sh 'docker stop myNodeWebApp' 
+         sh 'docker run -d -p 8181:3000 --name myNodeWebApp '+ dockerRegistry + ":$BUILD_NUMBER"
        }
     }
     stage('Remove Unused docker image') {
