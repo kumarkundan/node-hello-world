@@ -6,7 +6,7 @@ pipeline {
   }
   agent any
   triggers {
-        pollSCM('') //Empty quotes tells it to build on a push
+        pollSCM('* * * * *') //Empty quotes tells it to build on a push
     }
   tools {nodejs "node" }
   stages {
