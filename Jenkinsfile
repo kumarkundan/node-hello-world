@@ -5,6 +5,9 @@ pipeline {
     dockerImage = ''
   }
   agent any
+  triggers {
+        pollSCM('') //Empty quotes tells it to build on a push
+    }
   tools {nodejs "node" }
   stages {
     stage('Cloning Git') {
