@@ -17,11 +17,7 @@ pipeline {
          sh 'npm install'
        }
     }
-    stage('Run') {
-       steps {
-         sh 'npm start'
-       }
-    }
+   
     stage('Test') {
       steps {
         sh 'npm test'
@@ -42,6 +38,13 @@ pipeline {
           }
         }
       }
+    }
+     stage('Run') {
+       steps {
+         script {
+          dockerImage = docker.run dockerRegistry + ":$BUILD_NUMBER"
+        }
+       }
     }
     stage('Remove Unused docker image') {
       steps{
