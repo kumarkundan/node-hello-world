@@ -42,6 +42,7 @@ pipeline {
      stage('Run') {
        steps {
          sh 'docker stop myNodeWebApp' 
+         sh 'docker rm myNodeWebApp'
          sh 'docker run -d -p 8181:3000 --name myNodeWebApp '+ dockerRegistry + ":$BUILD_NUMBER"
        }
     }
